@@ -1,1 +1,74 @@
+# README - Gerador de QR Code
 
+## 📋 Descrição do Projeto
+
+**Gerador de QR Code** é uma aplicação web simples e eficiente que permite aos usuários gerar códigos QR a partir de qualquer URL ou texto. A ferramenta é totalmente client-side, não requerendo servidor backend para funcionar.
+
+## 🚀 Funcionalidades Principais
+
+- **Geração Instantânea**: Cria QR Codes em tempo real
+- **Interface Simples**: Design limpo e intuitivo
+- **Responsivo**: Funciona em dispositivos móveis e desktop
+- **Client-side**: Processamento totalmente no navegador
+- **Download Implícito**: QR Code gerado como imagem para fácil salvamento
+
+## 🛠 Tecnologias Utilizadas
+
+- **HTML5**: Estrutura semântica
+- **CSS3**: Estilização moderna e responsiva
+- **JavaScript**: Lógica de geração de QR Codes
+- **QRCode.js**: Biblioteca externa para geração de QR Codes
+
+## 🎨 Características de Design
+
+- **Layout Clean**: Foco na usabilidade
+- **Cores Neutras**: Fundo claro para melhor contraste
+- **Design Responsivo**: Adaptável a diferentes tamanhos de tela
+- **Feedback Visual**: Hover effects nos botões
+
+## 📱 Responsividade
+
+O projeto é totalmente responsivo com:
+- Layout adaptável para mobile, tablet e desktop
+- Elementos dimensionados proporcionalmente
+- Experiência consistente em todos os dispositivos
+
+## 🔧 Como Usar
+
+1. Acesse a aplicação no navegador
+2. Insira o link ou texto desejado no campo de entrada
+3. Clique em "Gerar QR Code"
+4. O QR Code será exibido abaixo do botão
+5. Para salvar: clique com o botão direito na imagem e selecione "Salvar imagem como"
+
+## ⚙️ Estrutura do Código
+
+```html
+- Container principal com inputs e botão
+- Div para exibição do QR Code gerado
+- Função JavaScript para geração do QR Code
+- Estilos CSS para aparência visual
+```
+
+## 🎯 Casos de Uso
+
+- Compartilhamento rápido de links
+- Marketing digital
+- Cartões de visita digitais
+- Acesso rápido a websites
+- Wi-Fi sharing (formato específico)
+- Pagamentos via PIX (formato específico)
+
+## 🔒 Considerações de Segurança
+
+- A aplicação é totalmente client-side
+- Nenhum dado é enviado para servidores externos
+- Use com cautela ao gerar QR Codes com informações sensíveis
+
+## 📄 Licença
+
+Este projeto utiliza a biblioteca QRCode.js sob sua respectiva licença.
+
+---
+
+**Desenvolvido para facilitar o compartilhamento de informações digitais** 📱🔗
