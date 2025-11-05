@@ -1,1 +1,88 @@
+# README - CineVibes Premium
 
+## 📋 Descrição do Projeto
+
+**CineVibes Premium** é uma plataforma web moderna e responsiva dedicada a críticas e análises cinematográficas de alta qualidade. O projeto oferece uma experiência completa para cinéfilos, com interface intuitiva, design atrativo e funcionalidades interativas.
+
+## 🚀 Funcionalidades Principais
+
+- **Navegação por Seções**: Sistema de navegação fluido entre diferentes categorias (Início, Filmes, Séries, Críticas, Planos, Lançamentos)
+- **Design Responsivo**: Layout adaptável para dispositivos móveis, tablets e desktops
+- **Sistema de Assinatura**: Apresentação de diferentes planos (Básico, Premium, Profissional)
+- **Conteúdo Multimídia**: Integração com vídeos do YouTube para trailers
+- **Interface Interativa**: Modais para login, cadastro e visualização de conteúdo
+- **Animações e Transições**: Efeitos visuais suaves para melhor experiência do usuário
+
+## 🛠 Tecnologias Utilizadas
+
+- **HTML5**: Estrutura semântica e moderna
+- **CSS3**: 
+  - Variáveis CSS para consistência de design
+  - Flexbox e Grid Layout para organização responsiva
+  - Animações e transições CSS
+  - Media Queries para responsividade
+- **JavaScript**: Interatividade e funcionalidades dinâmicas
+- **Font Awesome**: Ícones vetoriais
+- **Google Fonts**: Tipografia moderna (Poppins e Montserrat)
+
+## 🎨 Características de Design
+
+- **Paleta de Cores**:
+  - Primária: `#6C63FF` (Roxo)
+  - Secundária: `#FF6584` (Rosa)
+  - Destaque: `#36D1DC` (Azul)
+  - Escuro: `#1a1d2e`
+  - Claro: `#F8F9FA`
+
+- **Tipografia**:
+  - Poppins: Para textos corporativos
+  - Montserrat: Para títulos e elementos de destaque
+
+## 📱 Responsividade
+
+O projeto é totalmente responsivo com breakpoints para:
+- **Desktop**: Acima de 992px
+- **Tablet**: 768px - 992px
+- **Mobile**: Abaixo de 768px
+
+## 🔧 Estrutura de Arquivos
+
+```
+CineVibes/
+├── index.html          # Arquivo principal
+├── styles/             # Diretório para arquivos CSS (se separados)
+├── scripts/            # Diretório para arquivos JavaScript
+└── assets/             # Diretório para imagens e outros recursos
+```
+
+## 🚀 Como Executar
+
+1. Clone ou baixe o projeto
+2. Abra o arquivo `index.html` em qualquer navegador moderno
+3. Navegue pelas diferentes seções usando o menu de navegação
+
+## 📝 Próximas Implementações Sugeridas
+
+- [ ] Sistema de backend para usuários e assinaturas
+- [ ] Banco de dados para filmes e críticas
+- [ ] Sistema de busca avançada
+- [ ] Integração com APIs de filmes (TMDB, etc.)
+- [ ] Sistema de comentários e avaliações
+- [ ] Player de vídeo personalizado
+- [ ] Página de perfil do usuário
+- [ ] Sistema de notificações
+
+## 👥 Público-Alvo
+
+- Cinéfilos e amantes de cinema
+- Críticos e estudiosos de cinema
+- Profissionais da indústria cinematográfica
+- Estudantes de cinema e audiovisual
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+---
+
+**Desenvolvido com paixão por cinema e tecnologia** 🎬💻
