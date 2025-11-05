@@ -1,1 +1,127 @@
+# README - Sabor na Web
 
+## 📋 Descrição do Projeto
+
+**Sabor na Web** é uma plataforma gastronômica completa que oferece receitas testadas, serviços culinários e consultoria gastronômica. O site combina design moderno com funcionalidades intuitivas para proporcionar uma experiência excepcional aos amantes da culinária.
+
+## 🚀 Funcionalidades Principais
+
+- **Catálogo de Receitas**: Apresentação visual de receitas com informações detalhadas
+- **Serviços Gastronômicos**: Aulas, consultoria e kits de ingredientes
+- **Design Responsivo**: Experiência otimizada para todos os dispositivos
+- **Navegação Intuitiva**: Sistema de rolagem suave e indicador de página
+- **Formulário de Contato**: Canal direto para interação com usuários
+- **Animações Dinâmicas**: Efeitos visuais que melhoram a experiência do usuário
+
+## 🛠 Tecnologias Utilizadas
+
+- **HTML5**: Estrutura semântica moderna
+- **CSS3**:
+  - Variáveis CSS para consistência
+  - Flexbox e animações avançadas
+  - Grid para layouts responsivos
+  - Media Queries para adaptabilidade
+- **JavaScript**: Interatividade e funcionalidades dinâmicas
+- **Font Awesome**: Ícones vetoriais
+- **Google Fonts**: Tipografia personalizada
+
+## 🎨 Características de Design
+
+- **Paleta de Cores**:
+  - Primária: `#ff6b6b` (Vermelho coral)
+  - Secundária: `#4db6ac` (Verde água)
+  - Destaque: `#ffb74d` (Laranja)
+  - Escuro: `#333`
+  - Claro: `#f9f9f9`
+
+- **Tipografia**:
+  - Segoe UI: Para textos corporativos
+  - Hierarquia clara de títulos e conteúdo
+
+## 📱 Seções do Site
+
+1. **Hero Section**: Apresentação impactante com call-to-action
+2. **Receitas em Destaque**: Cards com informações completas
+3. **Serviços**: Três principais serviços oferecidos
+4. **Contato**: Formulário funcional para comunicação
+5. **Rodapé**: Informações institucionais e links
+
+## 🔧 Estrutura de Componentes
+
+### Cards de Receitas
+- Imagem destacada
+- Título e descrição
+- Tags de tempo e dificuldade
+- Botão de ação
+
+### Cards de Serviços
+- Ícone representativo
+- Título descritivo
+- Explicação do serviço
+
+### Navegação
+- Menu fixo no topo
+- Indicador de seção ativa
+- Rolagem suave entre seções
+
+## 🎯 Funcionalidades Interativas
+
+- **Indicador de Página**: Mostra a seção atual durante a rolagem
+- **Animações on Scroll**: Elementos aparecem conforme o usuário rola
+- **Hover Effects**: Feedback visual em botões e cards
+- **Formulário Responsivo**: Validação básica de campos
+
+## 📊 Otimizações Incluídas
+
+- **Performance**: Código otimizado e carregamento eficiente
+- **SEO**: Estrutura semântica adequada
+- **Acessibilidade**: Navegação por teclado e contrastes adequados
+- **Cross-browser**: Compatibilidade com navegadores modernos
+
+## 🚀 Como Personalizar
+
+### Cores
+Modifique as variáveis CSS na raiz (`:root`) para alterar o esquema de cores.
+
+### Conteúdo
+- Substitua as imagens de placeholder por conteúdo real
+- Atualize textos e informações de contato
+- Adicione mais receitas ou serviços
+
+### Funcionalidades
+- Integre com backend para formulário de contato
+- Adicione sistema de busca
+- Implemente banco de dados para receitas
+
+## 📱 Responsividade
+
+O site é totalmente responsivo com breakpoints para:
+- **Desktop**: Acima de 768px
+- **Tablet**: 768px e abaixo
+- **Mobile**: Smartphones em geral
+
+## 🔒 Próximas Melhorias Sugeridas
+
+- [ ] Sistema de avaliação para receitas
+- [ ] Filtros por categoria de receitas
+- [ ] Blog com artigos sobre culinária
+- [ ] Integração com redes sociais
+- [ ] Sistema de usuários e favoritos
+- [ ] API para gerenciamento de conteúdo
+- [ ] E-commerce para venda de kits
+
+## 👥 Público-Alvo
+
+- Amantes de culinária caseira
+- Pessoas buscando aprender a cozinhar
+- Profissionais da gastronomia
+- Donos de restaurantes
+- Eventos e catering
+
+## 🌟 Destaques do Projeto
+
+- **Design Moderno**: Interface limpa e atrativa
+- **Experiência do Usuário**: Navegação intuitiva e agradável
+- **Performance Otimizada**: Carregamento rápido e suave
+- **Código Organizado**: Estrutura limpa e bem comentada
+**Desenvolvido com paixão por gastronomia e tecnologia** 🍳💻
