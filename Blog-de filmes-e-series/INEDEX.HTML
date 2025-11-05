@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVibes Premium - Plataforma de Críticas e Análises de Cinema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Reset e variáveis */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6C63FF;
+            --primary-dark: #554fd8;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --dark: #1a1d2e;
+            --light: #F8F9FA;
+            --text: #333333;
+            --text-light: #6C757D;
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+            --radius: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7ff;
+            color: var(--text);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .header-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #e04e70;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: var(--radius) 0 0 var(--radius);
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-bar button:hover {
+            background: #e04e70;
+        }
+
+        /* Navegação */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        @supports (backdrop-filter: blur(10px)) {
+            nav {
+                background-color: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(10px);
+            }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+            background-color: var(--primary);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .user-actions a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .user-actions a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            z-index: 1001;
+        }
+
+        /* Main */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* Sobre */
+        .about {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .about p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Vídeos em Destaque */
+        .featured-videos {
+            margin: 3rem 0;
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .video-content {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .video-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* Planos de Assinatura */
+        .pricing {
+            margin: 4rem 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            text-align: center;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pricing-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .plan-features li i {
+            color: var(--primary);
+        }
+
+        /* Filmes e Séries */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .card-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .card-description {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #FFC107;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Críticas */
+        .reviews {
+            margin-bottom: 3rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .review-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .review-content {
+            line-height: 1.8;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .newsletter h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: var(--radius) 0 0 var(--radius);
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: #e04e70;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 1rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .close-modal:hover {
+            color: var(--secondary);
+        }
+
+        .modal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .mobile-toggle {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .nav-links, .user-actions {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+            
+            .user-actions {
+                align-items: flex-start;
+            }
+            
+            .mobile-toggle:checked ~ .nav-links,
+            .mobile-toggle:checked ~ .user-actions {
+                display: flex;
+            }
+            
+            .nav-links a {
+                color: var(--dark);
+                padding: 1rem;
+                text-align: center;
+                border-radius: 5px;
+                margin-bottom: 0.5rem;
+                background: rgba(255, 255, 255, 0.9);
+                transition: var(--transition);
+            }
+            
+            .nav-links a:hover, .nav-links a.active {
+                color: white;
+                background-color: var(--primary);
+            }
+            
+            .content-grid, .video-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form, .search-bar {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input, .search-bar input {
+                border-radius: var(--radius);
+                margin-bottom: 0.5rem;
+            }
+            
+            .newsletter-form button, .search-bar button {
+                border-radius: var(--radius);
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>CineVibes Premium</h1>
+            <p>Análises profissionais, críticas exclusivas e conteúdo cinematográfico de alta qualidade</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" id="btn-trial"><i class="fas fa-crown"></i> Experimente Grátis</button>
+                <button class="btn btn-secondary" id="btn-plans"><i class="fas fa-play-circle"></i> Conhecer Planos</button>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar filmes, séries, atores...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CineVibes</div>
+            
+            <input type="checkbox" id="mobile-toggle" class="mobile-toggle">
+            
+            <ul class="nav-links">
+                <li><a href="#" class="active" data-section="inicio">Início</a></li>
+                <li><a href="#" data-section="filmes">Filmes</a></li>
+                <li><a href="#" data-section="series">Séries</a></li>
+                <li><a href="#" data-section="criticas">Críticas</a></li>
+                <li><a href="#" data-section="planos">Planos</a></li>
+                <li><a href="#" data-section="lancamentos">Lançamentos</a></li>
+            </ul>
+            
+            <div class="user-actions">
+                <a href="#" id="btn-login"><i class="fas fa-user"></i> Entrar</a>
+                <a href="#" id="btn-subscribe"><i class="fas fa-shopping-cart"></i> Assinar</a>
+            </div>
+            
+            <label for="mobile-toggle" class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </label>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Seção Início (ativa por padrão) -->
+        <section id="inicio" class="content-section active">
+            <section class="about">
+                <h2 class="section-title">Sobre o CineVibes Premium</h2>
+                <p>Bem-vindo ao CineVibes Premium, a plataforma definitiva para cinéfilos exigentes que buscam análises aprofundadas, críticas especializadas e conteúdo exclusivo sobre o universo cinematográfico.</p>
+                <p>Nossa equipe é composta por críticos certificados, especialistas em cinema e jornalistas culturais com anos de experiência no mercado. Oferecemos análises que vão além da superfície, explorando técnicas de direção, roteiro, fotografia e atuação.</p>
+                <p>Com o CineVibes Premium, você tem acesso a conteúdo exclusivo, incluindo entrevistas com diretores e atores, análises de bastidores, acesso antecipado a críticas e muito mais.</p>
+                <p>Nossos planos de assinatura oferecem diferentes níveis de acesso para atender desde o cinéfilo casual até o profissional da indústria. Experimente gratuitamente por 7 dias e descubra um novo patamar de experiência cinematográfica.</p>
+            </section>
+
+            <!-- Seção de Vídeos em Destaque -->
+            <section class="featured-videos">
+                <h2 class="section-title">Vídeos em Destaque</h2>
+                <div class="video-container">
+                    <!-- Vídeo 1 -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/TcMBFSGVi1c" title="Trailer de Avatar: O Caminho da Água" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Avatar: O Caminho da Água</h3>
+                            <div class="video-meta">
+                                <span>Trailer Oficial</span>
+                                <span>2:45 min</span>
+                            </div>
+                            <p class="video-description">Confira o trailer oficial do aguardado filme de James Cameron, continuação do sucesso mundial Avatar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vídeo 2 -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/8ugaeA-nMTc" title="Trailer de Top Gun: Maverick" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Top Gun: Maverick</h3>
+                            <div class="video-meta">
+                                <span>Trailer Oficial</span>
+                                <span>2:30 min</span>
+                            </div>
+                            <p class="video-description">Depois de mais de 30 anos de serviço como um dos principais aviadores da Marinha, Pete "Maverick" Mitchell está de volta.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vídeo 3 -->
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/giXco2jaZ_4" title="Trailer de Oppenheimer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Oppenheimer</h3>
+                            <div class="video-meta">
+                                <span>Trailer Oficial</span>
+                                <span>2:28 min</span>
+                            </div>
+                            <p class="video-description">O épico filme de Christopher Nolan que narra a história de J. Robert Oppenheimer e a criação da bomba atômica.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Planos de Assinatura -->
+            <section class="pricing">
+                <h2 class="section-title">Planos de Assinatura</h2>
+                <div class="pricing-grid">
+                    <!-- Plano Básico -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Básico</h3>
+                            <div class="plan-price">R$ 14,90</div>
+                            <div class="plan-period">por mês</div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Acesso a críticas básicas</li>
+                            <li><i class="fas fa-check"></i> Catálogo limitado de filmes</li>
+                            <li><i class="fas fa-check"></i> Análises de lançamentos (após 1 semana)</li>
+                            <li><i class="fas fa-check"></i> Suporte por email</li>
+                        </ul>
+                        <button class="btn btn-primary btn-select-plan" data-plan="basico">Assinar Agora</button>
+                    </div>
+
+                    <!-- Plano Premium (Destaque) -->
+                    <div class="pricing-card featured">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Premium</h3>
+                            <div class="plan-price">R$ 29,90</div>
+                            <div class="plan-period">por mês</div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Acesso completo a todas as críticas</li>
+                            <li><i class="fas fa-check"></i> Catálogo completo de filmes e séries</li>
+                            <li><i class="fas fa-check"></i> Análises de lançamentos (acesso antecipado)</li>
+                            <li><i class="fas fa-check"></i> Conteúdo exclusivo e entrevistas</li>
+                            <li><i class="fas fa-check"></i> Listas personalizadas de recomendações</li>
+                            <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                        </ul>
+                        <button class="btn btn-secondary btn-select-plan" data-plan="premium">Experimente Grátis</button>
+                    </div>
+
+                    <!-- Plano Profissional -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Profissional</h3>
+                            <div class="plan-price">R$ 49,90</div>
+                            <div class="plan-period">por mês</div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Todos os benefícios Premium</li>
+                            <li><i class="fas fa-check"></i> Análises técnicas detalhadas</li>
+                            <li><i class="fas fa-check"></i> Dados de mercado e bilheteria</li>
+                            <li><i class="fas fa-check"></i> Acesso a eventos exclusivos</li>
+                            <li><i class="fas fa-check"></i> Certificado de especialização</li>
+                            <li><i class="fas fa-check"></i> Suporte dedicado 24/7</li>
+                        </ul>
+                        <button class="btn btn-primary btn-select-plan" data-plan="profissional">Assinar Agora</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="movies">
+                <h2 class="section-title">Filmes de Maior Bilheteria</h2>
+                <div class="content-grid">
+                    <!-- Filme 1 -->
+                    <div class="content-card">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg" alt="Vingadores: Ultimato" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">Vingadores: Ultimato</h3>
+                            <div class="card-meta">
+                                <span>2019</span>
+                                <span>181 min</span>
+                                <span class="card-tag">Ação</span>
+                            </div>
+                            <p class="card-description">Os Vingadores restantes precisam encontrar uma maneira de recuperar seus aliados para um confronto final contra Thanos.</p>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span>9.5/10</span>
+                            </div>
+                            <div class="card-buttons">
+                                <button class="btn btn-primary btn-watch-trailer" data-movie="Vingadores: Ultimato"><i class="fas fa-play"></i> Assistir Trailer</button>
+                                <button class="btn btn-secondary"><i class="fas fa-bookmark"></i> Favoritar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filme 2 -->
+                    <div class="content-card">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTYzMDM4NzkxOV5BMl5BanBnXkFtZTgwNzM1Mzg2NzM@._V1_FMjpg_UX1000_.jpg" alt="Avatar" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">Avatar</h3>
+                            <div class="card-meta">
+                                <span>2009</span>
+                                <span>162 min</span>
+                                <span class="card-tag">Ficção Científica</span>
+                            </div>
+                            <p class="card-description">Um paraplégico é despachado para a lua Pandora em uma missão única, mas fica dividido entre seguir ordens e proteger o mundo que ele considera sua casa.</p>
+                            <div class="rating">
+                                <span class="stars">★★★★☆</span>
+                                <span>8.8/10</span>
+                            </div>
+                            <div class="card-buttons">
+                                <button class="btn btn-primary btn-watch-trailer" data-movie="Avatar"><i class="fas fa-play"></i> Assistir Trailer</button>
+                                <button class="btn btn-secondary"><i class="fas fa-bookmark"></i> Favoritar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filme 3 -->
+                    <div class="content-card">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMDliMmNhNDEtODUyOS00MjNlLTgxODEtN2U3NzIxMGVkZTA1L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg" alt="Titanic" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">Titanic</h3>
+                            <div class="card-meta">
+                                <span>1997</span>
+                                <span>195 min</span>
+                                <span class="card-tag">Romance</span>
+                            </div>
+                            <p class="card-description">Um jovem artista pobre e uma jovem da alta sociedade se apaixonam a bordo do luxuoso e fatídico RMS Titanic.</p>
+                           
