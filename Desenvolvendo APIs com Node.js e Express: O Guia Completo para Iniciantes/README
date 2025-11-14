@@ -1,1 +1,223 @@
+📝 API de Gerenciamento de Tarefas
 
+Uma API RESTful completa para gerenciamento de tarefas (To-Do List) desenvolvida com Node.js, Express e autenticação JWT.
+
+🚀 Tecnologias Utilizadas
+
+· Node.js - Ambiente de execução JavaScript
+· Express.js - Framework web para Node.js
+· JWT - JSON Web Tokens para autenticação
+· bcryptjs - Criptografia de senhas
+· Nodemon - Desenvolvimento com hot-reload
+
+📋 Funcionalidades
+
+🔐 Autenticação
+
+· Registro de novos usuários
+· Login com JWT
+· Middleware de autenticação para rotas protegidas
+· Senhas criptografadas com bcrypt
+
+✅ CRUD de Tarefas
+
+· Criar novas tarefas
+· Listar todas as tarefas
+· Buscar tarefa específica
+· Atualizar tarefas existentes
+· Excluir tarefas
+· Marcar como concluída
+
+🛠️ Instalação e Execução
+
+Pré-requisitos
+
+· Node.js (versão 14 ou superior)
+· NPM ou Yarn
+
+Passos para instalação
+
+1. Clone o repositório:
+
+```bash
+git clone <url-do-repositorio>
+cd minha-api
+```
+
+1. Instale as dependências:
+
+```bash
+npm install
+```
+
+1. Execute em modo desenvolvimento:
+
+```bash
+npm run dev
+```
+
+1. Execute em produção:
+
+```bash
+npm start
+```
+
+📡 Endpoints da API
+
+🔓 Rotas Públicas
+
+GET /
+
+· Descrição: Rota de boas-vindas
+· Resposta: Mensagem de boas-vindas
+
+POST /login
+
+· Descrição: Autenticação de usuário
+· Body:
+
+```json
+{
+  "username": "usuario",
+  "password": "senha123"
+}
+```
+
+· Resposta: Token JWT e dados do usuário
+
+POST /usuarios
+
+· Descrição: Registrar novo usuário
+· Body:
+
+```json
+{
+  "username": "novousuario",
+  "password": "senha123"
+}
+```
+
+🔒 Rotas Protegidas (requer token JWT)
+
+GET /tarefas
+
+· Descrição: Lista todas as tarefas
+· Headers: Authorization: Bearer <token>
+
+POST /tarefas
+
+· Descrição: Cria nova tarefa
+· Body:
+
+```json
+{
+  "nome": "Nome da tarefa",
+  "descricao": "Descrição opcional"
+}
+```
+
+GET /tarefas/:id
+
+· Descrição: Busca tarefa específica
+
+PUT /tarefas/:id
+
+· Descrição: Atualiza tarefa existente
+· Body: (campos opcionais)
+
+```json
+{
+  "nome": "Novo nome",
+  "descricao": "Nova descrição",
+  "concluida": true
+}
+```
+
+DELETE /tarefas/:id
+
+· Descrição: Exclui tarefa
+
+PATCH /tarefas/:id/concluir
+
+· Descrição: Marca tarefa como concluída
+
+🔐 Autenticação
+
+Como usar a autenticação:
+
+1. Faça login em POST /login para obter o token
+2. Inclua o token no header das requisições:
+
+```
+Authorization: Bearer seu_token_jwt_aqui
+```
+
+👤 Usuário de Teste
+
+· Username: usuario
+· Password: senha123
+
+🗂️ Estrutura de Dados
+
+Tarefa
+
+```json
+{
+  "id": 1,
+  "nome": "Estudar Node.js",
+  "descricao": "Aprender sobre APIs REST",
+  "concluida": false,
+  "dataCriacao": "2023-10-25T10:00:00.000Z",
+  "dataAtualizacao": "2023-10-25T11:30:00.000Z",
+  "dataConclusao": null,
+  "usuarioId": 1
+}
+```
+
+Usuário
+
+```json
+{
+  "id": 1,
+  "username": "usuario",
+  "password": "hash_criptografado"
+}
+```
+
+🚨 Tratamento de Erros
+
+A API retorna códigos de status HTTP apropriados:
+
+· 200 - Sucesso
+· 201 - Criado com sucesso
+· 400 - Dados inválidos
+· 401 - Não autorizado
+· 404 - Recurso não encontrado
+
+📦 Scripts Disponíveis
+
+· npm start - Inicia o servidor em produção
+· npm run dev - Inicia o servidor em desenvolvimento com nodemon
+
+🌟 Próximos Passos Sugeridos
+
+· Integrar com banco de dados (MySQL, PostgreSQL, MongoDB)
+· Adicionar validação de dados com Joi ou Zod
+· Implementar paginação nas listagens
+· Adicionar filtros por status (concluída/pendente)
+· Criar documentação com Swagger
+· Adicionar testes unitários e de integração
+· Implementar rate limiting
+· Adicionar upload de arquivos
+
+🤝 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (git checkout -b feature/AmazingFeature)
+3. Commit suas mudanças (git commit -m 'Add some AmazingFeature')
+4. Push para a branch (git push origin feature/AmazingFeature)
+5. Abra um Pull Request
+
+📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
