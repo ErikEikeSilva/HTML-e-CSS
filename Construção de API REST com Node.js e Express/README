@@ -1,8 +1,6 @@
 Aula API
 API simples em Node.js/Express para gerenciar usuários (exemplo didático).
 
-Autor: Hudson Neves
-
 Resumo: Esta API expõe endpoints REST para listar, criar, atualizar e remover usuários armazenados em memória no arquivo server.js.
 
 Pré-requisitos:
