@@ -1,4 +1,4 @@
-🚀 API RESTful de Usuários com Node.js e MySQL
+ API RESTful de Usuários com Node.js e MySQL
 Uma API RESTful completa e robusta para gerenciar usuários, construída com Express.js e MySQL2, seguindo as melhores práticas de desenvolvimento de APIs.
 
 📋 Índice
@@ -35,10 +35,12 @@ node --version
 npm --version
 mysql --version
 💻 Instalação
-1. Clonar o repositório
-git clone https://github.com/HudsonNeves/api_bd.git
+
+Clonar o repositório
+git clone https://github.com/Erik/api_bd.git
 cd api_bd
-2. Instalar dependências
+
+Instalar dependências
 npm install
 Isso instalará as seguintes dependências:
 
@@ -55,11 +57,11 @@ USE api_usuarios;
 
 -- Criar tabela de usuários
 CREATE TABLE usuarios (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(100) NOT NULL,
+email VARCHAR(100) UNIQUE NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- Inserir alguns dados de exemplo (opcional)
@@ -72,24 +74,24 @@ Arquivo db.js
 Este arquivo contém a configuração da conexão com o banco de dados MySQL:
 
 const dbConfig = {
-    host: 'localhost',              // Host do servidor MySQL
-    user: 'root',                   // Usuário MySQL
-    password: '123456',             // Senha MySQL
-    database: 'api_usuarios',       // Nome do banco de dados
-    port: 3306,                     // Porta padrão do MySQL
-    waitForConnections: true,       // Aguardar conexão disponível
-    connectionLimit: 10,            // Máximo de conexões simultâneas
-    queueLimit: 0                   // Sem limite de fila
+host: 'localhost', // Host do servidor MySQL
+user: 'root', // Usuário MySQL
+password: '123456', // Senha MySQL
+database: 'api_usuarios', // Nome do banco de dados
+port: 3306, // Porta padrão do MySQL
+waitForConnections: true, // Aguardar conexão disponível
+connectionLimit: 10, // Máximo de conexões simultâneas
+queueLimit: 0 // Sem limite de fila
 };
 ⚠️ Alterar Credenciais
 Se suas credenciais MySQL são diferentes, edite o arquivo db.js:
 
 const dbConfig = {
-    host: 'seu_host',
-    user: 'seu_usuario',
-    password: 'sua_senha',
-    database: 'seu_banco',
-    port: 3306
+host: 'seu_host',
+user: 'seu_usuario',
+password: 'sua_senha',
+database: 'seu_banco',
+port: 3306
 };
 🚀 Como Usar
 Iniciar o servidor
@@ -103,7 +105,8 @@ Testar a API
 Use Postman, Insomnia, Thunder Client ou curl para testar os endpoints.
 
 🔌 Endpoints da API
-1. Health Check (Verificar se a API está viva)
+
+Health Check (Verificar se a API está viva)
 Endpoint: GET /
 
 Descrição: Verifica se o servidor está funcionando
@@ -114,9 +117,9 @@ curl http://localhost:3001/
 Resposta (200 OK):
 
 {
-  "mensagem": "API RESTful de Usuários está funcionando com MySQL! 🚀",
-  "versao": "2.0.0",
-  "timestamp": "2025-11-18T10:30:45.123Z"
+"mensagem": "API RESTful de Usuários está funcionando com MySQL! 🚀",
+"versao": "2.0.0",
+"timestamp": "2025-11-18T10:30:45.123Z"
 }
 2. Listar Todos os Usuários
 Endpoint: GET /usuarios
@@ -129,24 +132,24 @@ curl http://localhost:3001/usuarios
 Resposta (200 OK):
 
 {
-  "mensagem": "Lista de usuários recuperada com sucesso",
-  "data": [
-    {
-      "id": 1,
-      "nome": "João Silva",
-      "email": "joao@example.com",
-      "created_at": "2025-11-18T10:00:00.000Z",
-      "updated_at": "2025-11-18T10:00:00.000Z"
-    },
-    {
-      "id": 2,
-      "nome": "Maria Santos",
-      "email": "maria@example.com",
-      "created_at": "2025-11-18T10:05:00.000Z",
-      "updated_at": "2025-11-18T10:05:00.000Z"
-    }
-  ],
-  "total": 2
+"mensagem": "Lista de usuários recuperada com sucesso",
+"data": [
+{
+"id": 1,
+"nome": "João Silva",
+"email": "joao@example.com",
+"created_at": "2025-11-18T10:00:00.000Z",
+"updated_at": "2025-11-18T10:00:00.000Z"
+},
+{
+"id": 2,
+"nome": "Maria Santos",
+"email": "maria@example.com",
+"created_at": "2025-11-18T10:05:00.000Z",
+"updated_at": "2025-11-18T10:05:00.000Z"
+}
+],
+"total": 2
 }
 3. Buscar Usuário por ID
 Endpoint: GET /usuarios/:id
@@ -162,20 +165,20 @@ curl http://localhost:3001/usuarios/1
 Resposta (200 OK):
 
 {
-  "mensagem": "Usuário encontrado com sucesso",
-  "data": {
-    "id": 1,
-    "nome": "João Silva",
-    "email": "joao@example.com",
-    "created_at": "2025-11-18T10:00:00.000Z",
-    "updated_at": "2025-11-18T10:00:00.000Z"
-  }
+"mensagem": "Usuário encontrado com sucesso",
+"data": {
+"id": 1,
+"nome": "João Silva",
+"email": "joao@example.com",
+"created_at": "2025-11-18T10:00:00.000Z",
+"updated_at": "2025-11-18T10:00:00.000Z"
+}
 }
 Resposta (404 Not Found):
 
 {
-  "mensagem": "Usuário não encontrado",
-  "error": true
+"mensagem": "Usuário não encontrado",
+"error": true
 }
 4. Criar Novo Usuário
 Endpoint: POST /usuarios
@@ -188,38 +191,38 @@ Content-Type: application/json
 Body (JSON):
 
 {
-  "nome": "Lucas Costa",
-  "email": "lucas@example.com"
+"nome": "Lucas Costa",
+"email": "lucas@example.com"
 }
 Requisição com curl:
 
-curl -X POST http://localhost:3001/usuarios \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "Lucas Costa",
-    "email": "lucas@example.com"
-  }'
+curl -X POST http://localhost:3001/usuarios
+-H "Content-Type: application/json"
+-d '{
+"nome": "Lucas Costa",
+"email": "lucas@example.com"
+}'
 Resposta (201 Created):
 
 {
-  "mensagem": "Usuário criado com sucesso",
-  "data": {
-    "id": 3,
-    "nome": "Lucas Costa",
-    "email": "lucas@example.com"
-  }
+"mensagem": "Usuário criado com sucesso",
+"data": {
+"id": 3,
+"nome": "Lucas Costa",
+"email": "lucas@example.com"
+}
 }
 Resposta (400 Bad Request) - Dados faltando:
 
 {
-  "mensagem": "Nome e email são obrigatórios",
-  "error": true
+"mensagem": "Nome e email são obrigatórios",
+"error": true
 }
 Resposta (409 Conflict) - Email duplicado:
 
 {
-  "mensagem": "Email já cadastrado",
-  "error": true
+"mensagem": "Email já cadastrado",
+"error": true
 }
 5. Atualizar Usuário
 Endpoint: PUT /usuarios/:id
@@ -235,32 +238,32 @@ Content-Type: application/json
 Body (JSON):
 
 {
-  "nome": "João Silva Atualizado",
-  "email": "joao.novo@example.com"
+"nome": "João Silva Atualizado",
+"email": "joao.novo@example.com"
 }
 Requisição com curl:
 
-curl -X PUT http://localhost:3001/usuarios/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "João Silva Atualizado",
-    "email": "joao.novo@example.com"
-  }'
+curl -X PUT http://localhost:3001/usuarios/1
+-H "Content-Type: application/json"
+-d '{
+"nome": "João Silva Atualizado",
+"email": "joao.novo@example.com"
+}'
 Resposta (200 OK):
 
 {
-  "mensagem": "Usuário atualizado com sucesso",
-  "data": {
-    "id": 1,
-    "nome": "João Silva Atualizado",
-    "email": "joao.novo@example.com"
-  }
+"mensagem": "Usuário atualizado com sucesso",
+"data": {
+"id": 1,
+"nome": "João Silva Atualizado",
+"email": "joao.novo@example.com"
+}
 }
 Resposta (404 Not Found):
 
 {
-  "mensagem": "Usuário não encontrado",
-  "error": true
+"mensagem": "Usuário não encontrado",
+"error": true
 }
 6. Deletar Usuário
 Endpoint: DELETE /usuarios/:id
@@ -276,26 +279,26 @@ curl -X DELETE http://localhost:3001/usuarios/1
 Resposta (200 OK):
 
 {
-  "mensagem": "Usuário removido com sucesso",
-  "data": {
-    "id": 1,
-    "nome": "João Silva",
-    "email": "joao@example.com"
-  }
+"mensagem": "Usuário removido com sucesso",
+"data": {
+"id": 1,
+"nome": "João Silva",
+"email": "joao@example.com"
+}
 }
 Resposta (404 Not Found):
 
 {
-  "mensagem": "Usuário não encontrado",
-  "error": true
+"mensagem": "Usuário não encontrado",
+"error": true
 }
 📁 Estrutura do Projeto
 api_bd/
-├── server.js          # Arquivo principal - Define todas as rotas e inicia o servidor
-├── db.js              # Configuração da conexão com MySQL
-├── package.json       # Dependências e metadados do projeto
-├── README.md          # Este arquivo - Documentação completa
-└── node_modules/      # Diretório das dependências (gerado após npm install)
+├── server.js # Arquivo principal - Define todas as rotas e inicia o servidor
+├── db.js # Configuração da conexão com MySQL
+├── package.json # Dependências e metadados do projeto
+├── README.md # Este arquivo - Documentação completa
+└── node_modules/ # Diretório das dependências (gerado após npm install)
 Descrição dos Arquivos
 server.js
 Arquivo principal da aplicação que:
@@ -317,29 +320,29 @@ Metadados do projeto e dependências instaladas
 🛡️ Tratamento de Erros
 A API implementa tratamento robusto de erros:
 
-Código HTTP	Situação	Exemplo
-200	Sucesso na requisição GET/PUT/DELETE	Usuário encontrado e atualizado
-201	Sucesso na criação (POST)	Novo usuário criado
-400	Requisição inválida	Dados obrigatórios faltando
-404	Recurso não encontrado	Usuário com ID inexistente
-409	Conflito (email duplicado)	Email já cadastrado
-500	Erro interno do servidor	Erro na conexão com MySQL
+Código HTTP Situação Exemplo
+200 Sucesso na requisição GET/PUT/DELETE Usuário encontrado e atualizado
+201 Sucesso na criação (POST) Novo usuário criado
+400 Requisição inválida Dados obrigatórios faltando
+404 Recurso não encontrado Usuário com ID inexistente
+409 Conflito (email duplicado) Email já cadastrado
+500 Erro interno do servidor Erro na conexão com MySQL
 Exemplo de Tratamento
 try {
-    // Operação com banco de dados
+// Operação com banco de dados
 } catch (error) {
-    // Erro de chave duplicada (email único)
-    if (error.code === 'ER_DUP_ENTRY') {
-        return res.status(409).json({ 
-            mensagem: 'Email já cadastrado', 
-            error: true 
-        });
-    }
-    // Outro erro
-    res.status(500).json({ 
-        mensagem: 'Erro interno do servidor', 
-        error: true 
-    });
+// Erro de chave duplicada (email único)
+if (error.code === 'ER_DUP_ENTRY') {
+return res.status(409).json({
+mensagem: 'Email já cadastrado',
+error: true
+});
+}
+// Outro erro
+res.status(500).json({
+mensagem: 'Erro interno do servidor',
+error: true
+});
 }
 🔒 Segurança
 ✅ Proteção contra SQL Injection
@@ -347,12 +350,12 @@ A API utiliza Prepared Statements com placeholders (?) para prevenir SQL Injecti
 
 // ✅ SEGURO - Usando prepared statement
 const [results] = await pool.query(
-    'SELECT * FROM usuarios WHERE id = ?', 
-    [id]
+'SELECT * FROM usuarios WHERE id = ?',
+[id]
 );
 
 // ❌ INSEGURO - Concatenação direta (NÃO FAZER!)
-const query = `SELECT * FROM usuarios WHERE id = ${id}`;
+const query = SELECT * FROM usuarios WHERE id = ${id};
 ✅ Validação de Entrada
 Validação de campos obrigatórios
 Verificação de tipos de dados
@@ -392,23 +395,23 @@ Documentação MySQL2
 Guia REST API
 HTTP Status Codes
 👨‍💼 Autor
-Hudson Neves
+Erik
 
-GitHub: @HudsonNeves
-Email: hudson@example.com
+GitHub: @Erik
+Email: erik@example.com
 🎯 Próximos Passos
 Ideias para melhorar e expandir o projeto:
 
- Adicionar autenticação com JWT
- Implementar validação com joi ou yup
- Adicionar testes unitários com Jest
- Configurar logging com Winston
- Adicionar paginação nos resultados
- Implementar filtros e busca avançada
- Adicionar CORS configurável
- Dockerizar a aplicação
- Implementar cache com Redis
- Adicionar documentação Swagger/OpenAPI
+Adicionar autenticação com JWT
+Implementar validação com joi ou yup
+Adicionar testes unitários com Jest
+Configurar logging com Winston
+Adicionar paginação nos resultados
+Implementar filtros e busca avançada
+Adicionar CORS configurável
+Dockerizar a aplicação
+Implementar cache com Redis
+Adicionar documentação Swagger/OpenAPI
 Última atualização: 18 de Novembro de 2025
 
 Versão: 2.0.0
