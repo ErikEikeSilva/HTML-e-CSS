@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Usuários - Node.js + Express + MySQL</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 API REST - Gerenciamento de Usuários</h1>
+            <p>Node.js + Express + MySQL + Front-end Integrado</p>
+            <div class="status-bar">
+                <div id="apiStatus" class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Verificando API...</span>
+                </div>
+                <div id="dbStatus" class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Verificando Banco...</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="form-section">
+                <h2>📝 Gerenciar Usuário</h2>
+                
+                <div id="message" class="message"></div>
+                
+                <form id="userForm">
+                    <input type="hidden" id="userId">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" required placeholder="Digite o nome completo">
+                        <span class="error-message" id="nomeError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required placeholder="Digite o email válido">
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary" id="btnSubmit">
+                            <span class="btn-icon">➕</span>
+                            <span class="btn-text">Criar Usuário</span>
+                        </button>
+                        <button type="button" class="btn btn-warning" id="btnCancel" style="display: none;">
+                            <span class="btn-icon">❌</span>
+                            <span class="btn-text">Cancelar</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="quick-actions">
+                    <h2>🔧 Ações Rápidas</h2>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success" onclick="loadUsers()">
+                            <span class="btn-icon">🔄</span>
+                            Atualizar Lista
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="clearForm()">
+                            <span class="btn-icon">🧹</span>
+                            Limpar Formulário
+                        </button>
+                    </div>
+                </div>
+
+                <div class="api-info">
+                    <h2>📡 Endpoints da API</h2>
+                    <div class="endpoints">
+                        <div class="endpoint">
+                            <span class="method get">GET</span>
+                            <span class="url">/usuarios</span>
+                            <span class="desc">Listar usuários</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method post">POST</span>
+                            <span class="url">/usuarios</span>
+                            <span class="desc">Criar usuário</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method put">PUT</span>
+                            <span class="url">/usuarios/:id</span>
+                            <span class="desc">Atualizar usuário</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method delete">DELETE</span>
+                            <span class="url">/usuarios/:id</span>
+                            <span class="desc">Deletar usuário</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="users-section">
+                <div class="section-header">
+                    <h2>👥 Lista de Usuários</h2>
+                    <div class="users-count">
+                        <span id="usersCount">0</span> usuários
+                    </div>
+                </div>
+                
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <span>Carregando usuários...</span>
+                </div>
+                
+                <div id="usersList" class="users-list"></div>
+                
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <div class="empty-icon">📝</div>
+                    <h3>Nenhum usuário cadastrado</h3>
+                    <p>Comece criando o primeiro usuário usando o formulário ao lado.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 API REST - Desenvolvido com Node.js, Express e MySQL</p>
+        </footer>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirmar Exclusão</h3>
+            <p id="confirmMessage">Tem certeza que deseja excluir este usuário?</p>
+            <div class="modal-actions">
+                <button id="confirmCancel" class="btn btn-secondary">Cancelar</button>
+                <button id="confirmDelete" class="btn btn-danger">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
